@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="postjob-wrapper">
+    <div class="postjob-card">
+        <h2>Post a New Job</h2>
+        <p class="subtitle">Fill in the details to publish your job opening</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Job Title</label>
+                <input type="text" name="title" placeholder="e.g. Python Developer" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" name="company" placeholder="Company Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" name="location" placeholder="City / Remote" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Salary Range</label>
+                <input type="text" name="salary" placeholder="RS:15000-20000" required>
+            </div>
+            <div class="form-group">
+                <label>Shift</label>
+                <input type="text" name="title" placeholder="Day or Night" required>
+            </div>
+            <div class="form-group">
+                <label>Exprience</label>
+                <input type="text" name="title" placeholder="Fresher" required>
+            </div>
+
+            <div class="form-group">
+                <label>Job Description</label>
+                <textarea name="description" rows="6" placeholder="Describe job responsibilities..." required></textarea>
+            </div>
+
+            <button type="submit" class="postjob-btn">Publish Job</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

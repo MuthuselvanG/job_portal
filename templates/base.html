@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JobFinder</title>
+    
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/job_apply.css' %}">
+
+</head>
+<body>
+    <script src="{% static 'js/main.js' %}"></script>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://images.scalebranding.com/bbc2ea6c-5408-4d3d-8265-93a53a4c2b15.png" width="50px",highet="50px">
+            <h1>JobFinder</h1>
+        </div>
+
+        <ul class="nav_menu">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'home' %}">Jobs</a></li>
+
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'post_job' %}">Post Job</a></li>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Employer Login</a></li>
+                <li><a href="{% url 'register' %}">Employer Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+ <div class="logo-scroller">
+  <div class="logos">
+    <img src="https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png" alt="Apple">
+    <img src="https://1000logos.net/wp-content/uploads/2017/06/samsung-tumb.jpg" alt="Samsung">
+    <img src="https://1000logos.net/wp-content/uploads/2019/06/Microsoft-Logo.jpg" alt="Microsoft">
+    <img src="https://1000logos.net/wp-content/uploads/2021/11/Nike-Logo-tumb-140x88.jpg" alt="Tesla">
+    <img src="https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo-tumb.png" alt="Amazon">
+    <img src="https://1000logos.net/wp-content/uploads/2019/06/Google-Logo.jpg" alt="Google">
+    <img src="https://1000logos.net/wp-content/themes/redwaves-lite/pic/facebook-logo-small.png" alt="Facebook">
+    <img src="https://1000logos.net/wp-content/uploads/2021/09/Cognizant-Logo-tumb-1.png" alt="Adobe">
+    <img src="https://1000logos.net/wp-content/uploads/2021/05/Intel-logo.png" alt="Intel">
+    <img src="https://www.sealpath.com/wp-content/uploads/2022/10/wipro_primary-logo_color_rgb.png" alt="wipro">
+  </div>
+</div>
+
+{% block content %}{% endblock %}
+
+<footer class="foot">
+    <p>Created by <a href="https://www.linkedin.com/in/muthuselvan-g/" target="_blank">Muthuselvan G</a></p>
+</footer>
+
+</body>
+</html>

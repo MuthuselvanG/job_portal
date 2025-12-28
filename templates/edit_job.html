@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="postjob-wrapper">
+  <div class="postjob-card">
+    <h2>Edit Job</h2>
+
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="form-group">
+                <label>Job Title</label>
+                <input type="text" name="title" placeholder="e.g. Python Developer" value="{{ job.title }}" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" name="company" placeholder="Company Name" value="{{ job.company }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" name="location" placeholder="City / Remote" value="{{ job.location }}" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Salary Range</label>
+                <input type="text" name="salary" placeholder="RS:50000" value="{{ job.salary }}" required>
+            </div>
+            <div class="form-group">
+                <label>Shift</label>
+                <input type="text" name="title" placeholder="Day or Night" value="{{ job.Shift }}" required>
+            </div>
+            <div class="form-group">
+                <label>Exprience</label>
+                <input type="text" name="title" placeholder="Fresher" value="{{ job.exprience }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Job Description</label>
+                <textarea name="description" rows="6" placeholder="Describe job responsibilities..." value="{{ job.description }}" required></textarea>
+            </div>
+
+      <button type="submit" class="postjob-btn" onclick="return confirm('Are you sure you want to delete this job?')">
+        Update Job
+      </button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+

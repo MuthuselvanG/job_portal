@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="dashboard">
+    <h2>Employer Dashboard</h2>
+<div class="dashboard-container">
+
+
+    <table class="dashboard-table">
+        <thead>
+            <tr>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Applications</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for job in jobs %}
+            <tr>
+                <td>{{ job.title }}</td>
+                <td>{{ job.company }}</td>
+                <td>{{ job.location }}</td>
+
+                <td>
+                    <span class="badge applied">
+                        {{ job.application_set.count }}
+                    </span>
+                </td>
+
+                <td class="actions">
+                   <span><a href="{% url 'applications' job.id %}" class="btn view">View</a></span> 
+                    <span> <a href="{% url 'edit_job' job.id %}" class="btn edit">Edit</a></span> 
+                    <span><a href="{% url 'delete_job' job.id %}" class="btn delete"
+                       onclick="return confirm('Are you sure you want to delete this job?')">
+                       Delete
+                    </a></span> 
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5" class="empty">No jobs posted yet</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock %}

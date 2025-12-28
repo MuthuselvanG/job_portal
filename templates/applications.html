@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<center>
+    <h2>Applications</h2> <br>
+
+<table class="app-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Resume</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead><br>
+
+    <tbody>
+        {% for app in apps %}
+        <tr>
+            <td>{{ app.name }}</td>
+            <td>{{ app.email }}</td>
+            <td>{{ app.Resume }}</td>
+            <td>
+                <span class="status {{ app.status|lower }}">
+                    {{ app.status }}
+                </span>
+            </td>
+            <td class="actions">
+                <a href="/update/{{ app.id }}/Selected/"> <button>Select</button> </a> 
+                <a href="/update/{{ app.id }}/Rejected/"> <button>Reject</button>
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="empty">No applications found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</center>
+{% endblock %}
